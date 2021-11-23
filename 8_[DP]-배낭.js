@@ -24,26 +24,23 @@ for (let i = 0; i < N; i++) {
   VALUE[i] = +WV[1];
 }
 
-console.log(cutRod())
+const answer = cutRod();
+console.log(answer);
 
 function cutRod() {
   var r = Array.from({length: N}, () => Array(K).fill(0)); // [ 0, 0, 1, 2...
   for (let n = 0; n < N; n++) {
     let 무게 = WEIGHT[n];
     let 가치 = VALUE[n];
-    console.log(무게, 가치, n,"번째===================", r)
     for (let k = 0; k <= K; k++) {
-      console.log(k,"k===")
       //물건의 무게가 k보다 클 때
       if (무게 > k) {
-        console.log("무게커")
         if (r[n-1]) {
           r[n][k] = r[n-1][k];
         } else {
           r[n][k] = 0;
         } //k=3이고 n=4일 때를 보면 4(0) 대신 3(1)을 쓴다 
       } else {
-        console.log("충분", n,k)
         if (r[n-1]) {
           r[n][k] = Math.max(
             r[n - 1][k], //n번 물건 안 담는 경우
@@ -55,7 +52,7 @@ function cutRod() {
       }
     }
   }
-  return r;
+  return Math.max(...r.flat());
 }
 
 
