@@ -1,5 +1,8 @@
-//문제: https://www.acmicpc.net/problem/1260
-//난이도 : 실버II
+// ★ 문제: https://www.acmicpc.net/problem/1260
+// 난이도 : 실버II
+
+// ## 길찾기는 BFS
+// ## 부분집합은 DFS
 
 const fs = require("fs");
 const filePath = process.platform === "linux" ? "/dev/stdin" : "1.txt";
