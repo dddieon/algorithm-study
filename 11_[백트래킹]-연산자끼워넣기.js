@@ -15,7 +15,7 @@ const BUHO = (input[2].split(" ").map(i => Number(i)));
 
 let CASE = [];
 
-function solution(n) {
+function solution(n, numbers) {
   const array = []
   for (let i = 0; i < n.length; i++) {
     array.push(n[i])
@@ -29,7 +29,6 @@ function solution(n) {
   //순서가 다르면 다른 값 -> 순열
   function 순열() {
     if (temp.length === n.length) {
-      console.log("visited", visited)
       CASE = [...CASE, [...temp]];
       return // -------- * 로 이동
     }
@@ -46,12 +45,13 @@ function solution(n) {
       }
     }
   }
+  
+  const filtered = CASE.reduce((unique, item) => {
+    var arr = JSON.stringify(unique);
+    return arr.includes(JSON.stringify(item)) ? unique : [...unique, item];
+  }, []);
+
+  console.log(filtered)
 }
 
-solution(BUHO);
-
-const filtered = CASE.filter((element, index) => {
-  return CASE.indexOf(element) === index;
-});
-
-console.log(filtered);
+solution(BUHO, ARR);
